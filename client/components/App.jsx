@@ -1,4 +1,5 @@
 import React from 'react';
+import Board from './Board';
 
 class App extends React.Component {
 	constructor(props) {
@@ -16,6 +17,8 @@ class App extends React.Component {
 	}
 
 	render() {
+
+		const { size } = this.state;
 		
 		return (
 			<div>
@@ -23,6 +26,7 @@ class App extends React.Component {
 					<input type= "text" required onChange={() => this.handleBoardInput(event)}/>
 					<input type="button" value="Create Board"/>
 				</div>
+				<Board size={size} />
 			</div>
 		)
 	}
