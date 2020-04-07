@@ -4,13 +4,14 @@ class Board extends React.Component {
 
 	generateBoard() {
 		const { size } = this.props;
+		const tile = {'black': 'images/square-24b.png', 'white': 'images/square-24.png'}
 		var color = 'black';
 		var row, board = [];
 
 		for (var i = 0; i < size; i++) {
 			row = [];
 			for (var j = 0; j < size; j++) {
-				row.push(<a key={`${i}${j}`}>{color}</a>);
+				row.push(<img src={`${tile[color]}`} key={`${i}${j}`} />);
 				if (color === 'black') {
 					color = 'white';
 				} else {
