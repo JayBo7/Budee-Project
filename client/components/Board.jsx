@@ -5,15 +5,16 @@ class Board extends React.Component {
 	generateBoard() {
 		const { size } = this.props;
 		const tile = {'black': 'images/square-24b', 'white': 'images/square-24'}
-		const pieces = {'black': '-bc', 'red': '-rc', 'no': ''}
+		const pieces = {'black': '-bc', 'red': '-rc', 'none': ''}
 		var color = 'black';
-		var piece = 'no';
+		var piece;
 		var row, board = [];
 
 		// loop through N
 		for (var i = 0; i < size; i++) {
 			row = [];
 			for (var j = 0; j < size; j++) {
+				piece = 'none';
 				// initialize red pieces
 				if (i <= 1) {
 					piece = 'red'
