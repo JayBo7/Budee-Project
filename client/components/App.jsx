@@ -24,7 +24,6 @@ class App extends React.Component {
 			<div>
 				<div>
 					<input type= "text" required onChange={() => this.handleBoardInput(event)}/>
-					<input type="button" value="Create Board"/>
 				</div>
 				<Board size={size} />
 			</div>

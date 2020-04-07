@@ -19,10 +19,12 @@ class Board extends React.Component {
 				}
 			}
 			board.push(<div key={`${i}`}>{row}</div>);
-			if (color === 'black') {
-				color = 'white';
-			} else {
-				color ='black';
+			if (size % 2 === 0) {
+				if (color === 'black') {
+					color = 'white';
+				} else {
+					color ='black';
+				}
 			}
 		}
 
