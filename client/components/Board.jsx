@@ -8,6 +8,7 @@ class Board extends React.Component {
 		var color = 'black';
 		var row, board = [];
 
+		// loop through N
 		for (var i = 0; i < size; i++) {
 			row = [];
 			for (var j = 0; j < size; j++) {
@@ -18,7 +19,8 @@ class Board extends React.Component {
 					color ='black';
 				}
 			}
-			board.push(<div key={`${i}`}>{row}</div>);
+			board.push(<div className='row' key={`${i}`}>{row}</div>);
+			//handle cases where N is odd to have an alternating board
 			if (size % 2 === 0) {
 				if (color === 'black') {
 					color = 'white';
