@@ -7,7 +7,6 @@ class Board extends React.Component {
 		const tile = {'black': 'images/square-24b', 'white': 'images/square-24'}
 		const pieces = {'b': '-bc', 'r': '-rc'}
 		var color = 'black';
-		var piece;
 		var row, board = [];
 
 		// loop through N
@@ -15,25 +14,17 @@ class Board extends React.Component {
 			row = [];
 			for (var j = 0; j < size; j++) {
 				if (grid[i*size+j]) {
-					row.push(<img src={`${tile[color]}${pieces[grid[i*size+j]]}.png`} key={`${i*size+j}b`} />)
+					row.push(<img src={`${tile[color]}${pieces[grid[i*size+j][0]]}.png`} key={`${i*size+j}`} />)
 				} else {
 					row.push(<img src={`${tile[color]}.png`} key={`${i*size+j}`} />);
 				}
 				// alternate colors
-				if (color === 'black') {
-					color = 'white';
-				} else {
-					color ='black';
-				}
+				color = color === 'black' ? 'white' : 'black';
 			}
 			board.push(<div className='row' key={`${i}`}>{row}</div>);
 			//handle cases where N is even to have an alternating board
 			if (size % 2 === 0) {
-				if (color === 'black') {
-					color = 'white';
-				} else {
-					color ='black';
-				}
+				color = color === 'black' ? 'white' : 'black';
 			}
 		}
 
