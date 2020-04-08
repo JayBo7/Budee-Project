@@ -38,16 +38,16 @@ class App extends React.Component {
 
 		// handle edge cases
 		if (num == 3) {
-			newGrid = [player1[0], player1[0], player1[0], undefined, undefined, undefined, player2[0], player2[0], player2[0]]
+			newGrid = [player1[0]+player1[1], player1[0]+player1[1], player1[0]+player1[1], undefined, undefined, undefined, player2[0]+player2[1], player2[0]+player2[1], player2[0]+player2[1]]
 		} else if (num == 2) {
-			newGrid = [player1[0], player1[0], player2[0], player2[0]]
+			newGrid = [player1[0]+player1[1], player1[0]+player1[1], player2[0]+player2[1], player2[0]+player2[1]]
 		} else {
 			for (var i = 0; i < num; i++) {
 				for (var j = 0; j < num; j++) {
 					if (i <= 1) {
-						newGrid.push(player1[0]);
+						newGrid.push(player1[0]+player1[1]);
 					} else if (i >= num - 2) {
-						newGrid.push(player2[0]);
+						newGrid.push(player2[0]+player2[1]);
 					} else {
 						newGrid.push(undefined);
 					}
