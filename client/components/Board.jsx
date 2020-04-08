@@ -3,9 +3,9 @@ import React from 'react';
 class Board extends React.Component {
 
 	generateBoard() {
-		const { size } = this.props;
+		const { size, grid } = this.props;
 		const tile = {'black': 'images/square-24b', 'white': 'images/square-24'}
-		const pieces = {'black': '-bc', 'red': '-rc', 'none': ''}
+		const pieces = {'b': '-bc', 'r': '-rc'}
 		var color = 'black';
 		var piece;
 		var row, board = [];
@@ -14,16 +14,11 @@ class Board extends React.Component {
 		for (var i = 0; i < size; i++) {
 			row = [];
 			for (var j = 0; j < size; j++) {
-				piece = 'none';
-				// initialize red pieces
-				if (i <= 1) {
-					piece = 'red'
+				if (grid[i*size+j]) {
+					row.push(<img src={`${tile[color]}${pieces[grid[i*size+j]]}.png`} key={`${i*size+j}b`} />)
+				} else {
+					row.push(<img src={`${tile[color]}.png`} key={`${i*size+j}`} />);
 				}
-				// initialize black pieces
-				if (i >= size - 2) {
-					piece = 'black'
-				}
-				row.push(<img src={`${tile[color]}${pieces[piece]}.png`} key={`${i}${j}`} />);
 				// alternate colors
 				if (color === 'black') {
 					color = 'white';
@@ -32,7 +27,7 @@ class Board extends React.Component {
 				}
 			}
 			board.push(<div className='row' key={`${i}`}>{row}</div>);
-			//handle cases where N is odd to have an alternating board
+			//handle cases where N is even to have an alternating board
 			if (size % 2 === 0) {
 				if (color === 'black') {
 					color = 'white';
@@ -46,7 +41,6 @@ class Board extends React.Component {
 	}
 
 	render() {
-		
 		return (
 			<div>
 				{this.generateBoard()}
